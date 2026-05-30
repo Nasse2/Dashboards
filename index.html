@@ -171,7 +171,7 @@
 
     .sparkline {
         width: 100%;
-        height: 72px;
+        height: 92px;
         margin: 6px 0 12px;
     }
 
@@ -295,6 +295,207 @@
         background: #f0f7fc;
     }
 
+    .kommundata-extras {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 22px;
+    }
+
+    .kommundata-extras .wide {
+        grid-column: 1 / -1;
+    }
+
+    .insight-summary {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+    }
+
+    .insight-summary .value {
+        margin: 0;
+        min-height: 0;
+    }
+
+    .insight-summary .value.negative,
+    .driver-value.negative {
+        color: var(--danger);
+    }
+
+    .insight-summary .value.positive,
+    .driver-value.positive {
+        color: #2a7f62;
+    }
+
+    .driver-list,
+    .age-list {
+        display: grid;
+        gap: 12px;
+    }
+
+    .driver-row {
+        display: grid;
+        grid-template-columns: 125px minmax(0, 1fr) 72px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .driver-label,
+    .age-label,
+    .pyramid-label {
+        color: #555;
+        font-weight: 700;
+        font-size: 0.92rem;
+    }
+
+    .driver-track {
+        position: relative;
+        height: 18px;
+        border-radius: 999px;
+        background: #edf1f5;
+        overflow: hidden;
+    }
+
+    .driver-track::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: #a8b4bf;
+    }
+
+    .driver-bar {
+        position: absolute;
+        top: 3px;
+        bottom: 3px;
+        border-radius: 999px;
+        background: #2a7f62;
+    }
+
+    .driver-bar.negative {
+        background: var(--danger);
+    }
+
+    .driver-value {
+        font-weight: 800;
+        text-align: right;
+        color: var(--primary);
+    }
+
+    .age-bar {
+        display: flex;
+        height: 28px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: #edf1f5;
+        margin: 8px 0 16px;
+    }
+
+    .age-segment {
+        min-width: 3px;
+    }
+
+    .age-row {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr) 130px;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .age-mini-track {
+        height: 10px;
+        border-radius: 999px;
+        background: #edf1f5;
+        overflow: hidden;
+    }
+
+    .age-mini-fill {
+        display: block;
+        height: 100%;
+        border-radius: 999px;
+    }
+
+    .age-value {
+        text-align: right;
+        color: var(--muted);
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .pyramid-head,
+    .pyramid-row {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) 64px minmax(0, 1fr) 58px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .pyramid-head {
+        color: var(--muted);
+        font-size: 0.86rem;
+        margin-bottom: 8px;
+    }
+
+    .pyramid-chart {
+        display: grid;
+        gap: 7px;
+    }
+
+    .pyramid-age {
+        color: #555;
+        font-weight: 700;
+        text-align: center;
+        font-size: 0.88rem;
+    }
+
+    .pyramid-number {
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .pyramid-number.left {
+        text-align: right;
+    }
+
+    .pyramid-side {
+        position: relative;
+        height: 20px;
+        border-radius: 4px;
+        background: #edf1f5;
+        overflow: hidden;
+    }
+
+    .pyramid-fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        min-width: 2px;
+        border-radius: 4px;
+    }
+
+    .pyramid-fill.men {
+        right: 0;
+        background: #2f74a8;
+    }
+
+    .pyramid-fill.women {
+        left: 0;
+        background: #b74e73;
+    }
+
+    .insight-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-top: 14px;
+    }
+
     .section-comparison {
         margin-top: 22px;
     }
@@ -327,6 +528,31 @@
         .comparison-table {
             font-size: 0.86rem;
         }
+
+        .kommundata-extras {
+            grid-template-columns: 1fr;
+        }
+
+        .driver-row,
+        .age-row {
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+
+        .driver-value,
+        .age-value {
+            text-align: left;
+        }
+
+        .pyramid-head,
+        .pyramid-row {
+            grid-template-columns: 44px minmax(0, 1fr) 52px minmax(0, 1fr) 44px;
+            gap: 6px;
+        }
+
+        .pyramid-number {
+            font-size: 0.76rem;
+        }
     }
 </style>
 </head>
@@ -342,6 +568,7 @@
         <button class="tab-btn" type="button" data-tab="ekonomi">Ekonomiskt bistånd</button>
         <button class="tab-btn" type="button" data-tab="aldreomsorg">Äldreomsorg</button>
         <button class="tab-btn" type="button" data-tab="halsa">Hälso- och sjukvård</button>
+        <button class="tab-btn" type="button" data-tab="kommundata">Kommundata</button>
         <button class="tab-btn" type="button" data-tab="jamforelser">Jämförelser</button>
     </nav>
 
@@ -380,6 +607,46 @@
             <div class="section-comparison" data-comparison-panel="compare-halsa"></div>
         </section>
 
+        <section id="kommundata" class="tab-content" aria-labelledby="Kommundata">
+            <div class="info">Befolkning, flyttningar, födda och döda visas på kommunnivå.</div>
+            <div class="grid" data-grid="kommundata"></div>
+            <div class="kommundata-extras">
+                <article class="comparison-card" id="population-change-card">
+                    <h3>Befolkningsförändringens orsaker</h3>
+                    <div class="insight-summary">
+                        <div>
+                            <div class="value" id="population-change-value">Laddar...</div>
+                            <div class="year" id="population-change-year"></div>
+                        </div>
+                    </div>
+                    <div class="driver-list" id="population-drivers"></div>
+                    <div class="insight-note">Flyttnetto och födelsenetto summeras mot total befolkningsförändring. Skillnad visas som övrig justering.</div>
+                </article>
+
+                <article class="comparison-card" id="age-groups-card">
+                    <h3>Åldersgrupper</h3>
+                    <div class="year" id="age-groups-year">Laddar...</div>
+                    <div class="age-bar" id="age-composition-bar"></div>
+                    <div class="age-list" id="age-groups-list"></div>
+                    <div class="insight-note">Andelarna räknas på kommunens totala befolkning samma år. Gruppen 80+ ingår även i 65+.</div>
+                </article>
+
+                <article class="comparison-card wide" id="population-pyramid-card">
+                    <h3>Befolkningspyramid</h3>
+                    <div class="pyramid-head">
+                        <span></span>
+                        <span class="pyramid-label">Män</span>
+                        <span></span>
+                        <span class="pyramid-label">Kvinnor</span>
+                        <span></span>
+                    </div>
+                    <div class="pyramid-chart" id="population-pyramid">Laddar...</div>
+                    <div class="insight-note" id="population-pyramid-year"></div>
+                </article>
+            </div>
+            <div class="section-comparison" data-comparison-panel="compare-kommundata"></div>
+        </section>
+
         <section id="jamforelser" class="tab-content" aria-labelledby="Jämförelser">
             <div class="toolbar">
                 <label for="comparison-select">Välj nyckeltal:</label>
@@ -408,7 +675,7 @@
         </section>
     </main>
 
-    <p class="source">Källa: Kolada API v3. Värdena hämtas vid sidladdning och uppdateras när en enhet väljs.</p>
+    <p class="source">Källa: Kolada API v3. Befolkningsuppgifterna kommer från SCB via Kolada. Värdena hämtas vid sidladdning och uppdateras när en enhet väljs.</p>
 </div>
 <div class="chart-tooltip" id="chart-tooltip" role="status" aria-live="polite"></div>
 
@@ -424,6 +691,22 @@
         { id: "0682", title: "Nässjö", color: "#7a4cb0" },
         { id: "0686", title: "Eksjö", color: "#b23a48" },
         { id: "0687", title: "Tranås", color: "#4f6f8f" }
+    ];
+
+    const jonkopingCountyMunicipalities = [
+        { id: "0604", title: "Aneby" },
+        { id: "0617", title: "Gnosjö" },
+        { id: "0642", title: "Mullsjö" },
+        { id: "0643", title: "Habo" },
+        { id: "0662", title: "Gislaved" },
+        { id: "0665", title: "Vaggeryd" },
+        { id: "0680", title: "Jönköping" },
+        { id: "0682", title: "Nässjö" },
+        { id: "0683", title: "Värnamo" },
+        { id: "0684", title: "Sävsjö" },
+        { id: "0685", title: "Vetlanda" },
+        { id: "0686", title: "Eksjö" },
+        { id: "0687", title: "Tranås" }
     ];
 
     const unitGroups = {
@@ -631,10 +914,139 @@
                 format: "currency",
                 unit: false
             }
+        ],
+        kommundata: [
+            {
+                key: "N01951-total",
+                id: "N01951",
+                title: "Invånare totalt",
+                format: "number",
+                gender: "T",
+                unit: false
+            },
+            {
+                key: "N01951-men",
+                id: "N01951",
+                title: "Invånare män",
+                format: "number",
+                gender: "M",
+                unit: false
+            },
+            {
+                key: "N01951-women",
+                id: "N01951",
+                title: "Invånare kvinnor",
+                format: "number",
+                gender: "K",
+                unit: false
+            },
+            {
+                id: "N01919",
+                title: "Invånare 0-19 år",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01955",
+                title: "Invånare 20-64 år",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01938",
+                title: "Invånare 65+",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01957",
+                title: "Invånare 80+",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N02012",
+                title: "Befolkningsförändring sedan föregående år",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01801",
+                title: "Inflyttade till kommunen",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01802",
+                title: "Utflyttade från kommunen",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01800",
+                title: "Flyttnetto",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01804",
+                title: "Födda",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01805",
+                title: "Döda",
+                format: "number",
+                unit: false
+            },
+            {
+                id: "N01803",
+                title: "Födelsenetto",
+                format: "number",
+                unit: false
+            }
         ]
     };
 
     const comparisonKpis = Object.values(dashboards).flat();
+    const genderLabels = { T: "totalt", M: "män", K: "kvinnor" };
+    const dataCache = new Map();
+
+    const populationDriverKpis = [
+        { id: "N01800", title: "Flyttnetto" },
+        { id: "N01803", title: "Födelsenetto" }
+    ];
+
+    const ageHighlights = [
+        { id: "N01919", title: "0-19 år", color: "#2f74a8" },
+        { id: "N01955", title: "20-64 år", color: "#2a7f62" },
+        { id: "N01938", title: "65+", color: "#a35c00" },
+        { id: "N01957", title: "80+", color: "#b74e73" }
+    ];
+
+    const ageComposition = [
+        { id: "N01919", title: "0-19", color: "#2f74a8" },
+        { id: "N01955", title: "20-64", color: "#2a7f62" },
+        { id: "N01956", title: "65-79", color: "#a35c00" },
+        { id: "N01957", title: "80+", color: "#b74e73" }
+    ];
+
+    const pyramidGroups = [
+        { id: "N01944", title: "85+" },
+        { id: "N01943", title: "80-84" },
+        { id: "N01942", title: "75-79" },
+        { id: "N01941", title: "70-74" },
+        { id: "N01940", title: "65-69" },
+        { id: "N01981", title: "55-64" },
+        { id: "N01980", title: "45-54" },
+        { id: "N01979", title: "35-44" },
+        { id: "N01978", title: "25-34" },
+        { id: "N01977", title: "20-24" },
+        { id: "N01954", title: "16-19" },
+        { id: "N01953", title: "6-15" },
+        { id: "N01952", title: "0-5" }
+    ];
 
     const chartTooltipData = new WeakMap();
     const comparisonPanels = new Map();
@@ -666,6 +1078,7 @@
         renderComparisonOptions("main-comparison");
         await loadUnits();
         await Promise.all(Object.keys(dashboards).map(renderDashboard));
+        await renderKommundataInsights();
         await Promise.all([...comparisonPanels.keys()].map(renderComparison));
     }
 
@@ -683,16 +1096,25 @@
         Object.entries(dashboards).forEach(([area, cards]) => {
             const grid = document.querySelector(`[data-grid="${area}"]`);
             grid.innerHTML = cards.map(card => `
-                <article class="card" id="kpi-${card.id}">
+                <article class="card" id="kpi-${cardKey(card)}">
                     <h3>${card.title}</h3>
-                    <div class="kpi-id">${card.id}</div>
+                    <div class="kpi-id">${formatKpiMeta(card)}</div>
                     <div class="value">Laddar...</div>
                     <div class="status"></div>
-                    <canvas class="sparkline" width="320" height="72" aria-hidden="true"></canvas>
+                    <canvas class="sparkline" width="320" height="92" aria-hidden="true"></canvas>
                     <div class="year"></div>
                 </article>
             `).join("");
         });
+    }
+
+    function cardKey(card) {
+        return card.key || card.id;
+    }
+
+    function formatKpiMeta(card) {
+        const gender = card.gender && card.gender !== "T" ? `, ${genderLabels[card.gender]}` : "";
+        return `${card.id}${gender}`;
     }
 
     function renderEmbeddedComparisonPanels() {
@@ -700,7 +1122,8 @@
             lss: "Jämförelse LSS",
             ekonomi: "Jämförelse ekonomiskt bistånd",
             aldreomsorg: "Jämförelse äldreomsorg",
-            halsa: "Jämförelse hälso- och sjukvård"
+            halsa: "Jämförelse hälso- och sjukvård",
+            kommundata: "Jämförelse kommundata"
         };
 
         Object.entries(dashboards).forEach(([area, kpis]) => {
@@ -753,7 +1176,7 @@
     function renderComparisonOptions(panelId) {
         const panel = comparisonPanels.get(panelId);
         const select = document.getElementById(panel.selectId);
-        select.innerHTML = panel.kpis.map(card => `<option value="${card.id}">${card.title}</option>`).join("");
+        select.innerHTML = panel.kpis.map(card => `<option value="${cardKey(card)}">${card.title}</option>`).join("");
     }
 
     async function loadUnits() {
@@ -803,7 +1226,7 @@
     }
 
     async function updateCard(cardConfig, ouId) {
-        const card = document.getElementById(`kpi-${cardConfig.id}`);
+        const card = document.getElementById(`kpi-${cardKey(cardConfig)}`);
         setCardLoading(card);
 
         try {
@@ -812,8 +1235,8 @@
                 ? `/oudata/kpi/${cardConfig.id}/ou/${ouId}`
                 : `/data/municipality/${MUNICIPALITY_ID}/kpi/${cardConfig.id}`;
             const data = await fetchJson(`${API_BASE}${path}`);
-            const latest = latestValidValue(data.values || []);
-            const series = valuesByYear(data.values || []);
+            const series = valuesByYear(data.values || [], cardConfig.gender || "T");
+            const latest = latestValidValue(series);
 
             if (!latest) {
                 setCardNoData(card, useOuData);
@@ -821,34 +1244,233 @@
             }
 
             setCardValue(card, latest, cardConfig, useOuData);
-            drawLineChart(card.querySelector(".sparkline"), [{ title: "Sävsjö", color: "#005a9c", values: series }], cardConfig.format, false);
+            drawLineChart(card.querySelector(".sparkline"), [{ title: "Sävsjö", color: "#005a9c", values: series }], cardConfig.format, false, "", true);
         } catch (error) {
             setCardError(card);
         }
     }
 
     async function fetchJson(url) {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Kolada svarade ${response.status}`);
+        if (dataCache.has(url)) {
+            return dataCache.get(url);
         }
-        return response.json();
+
+        const request = fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Kolada svarade ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                dataCache.delete(url);
+                throw error;
+            });
+
+        dataCache.set(url, request);
+        return request;
     }
 
-    function latestValidValue(rows) {
-        return valuesByYear(rows).slice().sort((a, b) => b.period - a.period)[0] || null;
+    function latestValidValue(series) {
+        return series.slice().sort((a, b) => b.period - a.period)[0] || null;
     }
 
-    function valuesByYear(rows) {
+    function valuesByYear(rows, preferredGender = "T") {
         return rows
             .map(row => {
-                const value = (row.values || []).find(item => item.gender === "T" && item.value !== null)
-                    || (row.values || []).find(item => item.value !== null);
+                const values = row.values || [];
+                const value = values.find(item => item.gender === preferredGender && item.value !== null)
+                    || (preferredGender === "T" ? values.find(item => item.value !== null) : null);
                 return value ? { period: Number(row.period), value: Number(value.value), status: value.status || "" } : null;
             })
             .filter(Boolean)
             .filter(point => point.period >= START_YEAR)
             .sort((a, b) => a.period - b.period);
+    }
+
+    async function renderKommundataInsights() {
+        await Promise.all([
+            renderPopulationDrivers(),
+            renderAgeGroups(),
+            renderPopulationPyramid()
+        ]);
+    }
+
+    async function latestKpiPoint(kpiId, gender = "T") {
+        const data = await fetchJson(`${API_BASE}/data/municipality/${MUNICIPALITY_ID}/kpi/${kpiId}`);
+        return latestValidValue(valuesByYear(data.values || [], gender));
+    }
+
+    async function latestGenderPoint(kpiId) {
+        const data = await fetchJson(`${API_BASE}/data/municipality/${MUNICIPALITY_ID}/kpi/${kpiId}`);
+        const rows = (data.values || []).slice().sort((a, b) => Number(b.period) - Number(a.period));
+
+        for (const row of rows) {
+            const values = row.values || [];
+            const men = genderValue(values, "M");
+            const women = genderValue(values, "K");
+            const total = genderValue(values, "T");
+
+            if (men !== null || women !== null || total !== null) {
+                return {
+                    period: Number(row.period),
+                    men: men || 0,
+                    women: women || 0,
+                    total: total || (men || 0) + (women || 0)
+                };
+            }
+        }
+
+        return null;
+    }
+
+    function genderValue(values, gender) {
+        const item = values.find(value => value.gender === gender && value.value !== null);
+        return item ? Number(item.value) : null;
+    }
+
+    async function renderPopulationDrivers() {
+        const valueEl = document.getElementById("population-change-value");
+        const yearEl = document.getElementById("population-change-year");
+        const listEl = document.getElementById("population-drivers");
+
+        try {
+            const [change, migration, birth] = await Promise.all([
+                latestKpiPoint("N02012"),
+                ...populationDriverKpis.map(kpi => latestKpiPoint(kpi.id))
+            ]);
+
+            if (!change) throw new Error("Saknar befolkningsförändring");
+
+            const migrationValue = migration ? migration.value : 0;
+            const birthValue = birth ? birth.value : 0;
+            const adjustment = change.value - migrationValue - birthValue;
+            const rows = [
+                { title: "Flyttnetto", value: migrationValue },
+                { title: "Födelsenetto", value: birthValue },
+                { title: "Övrig justering", value: adjustment }
+            ];
+            const maxAbs = Math.max(1, ...rows.map(row => Math.abs(row.value)));
+
+            valueEl.className = `value ${valueTone(change.value)}`;
+            valueEl.textContent = `${formatSignedValue(change.value)} invånare`;
+            yearEl.textContent = `Mätår: ${change.period}`;
+            listEl.innerHTML = rows.map(row => `
+                <div class="driver-row">
+                    <div class="driver-label">${row.title}</div>
+                    <div class="driver-track">
+                        <span class="driver-bar ${row.value < 0 ? "negative" : ""}" style="${driverBarStyle(row.value, maxAbs)}"></span>
+                    </div>
+                    <div class="driver-value ${valueTone(row.value)}">${formatSignedValue(row.value)}</div>
+                </div>
+            `).join("");
+        } catch (error) {
+            valueEl.className = "value negative";
+            valueEl.textContent = "Kunde inte hämta";
+            yearEl.textContent = "";
+            listEl.innerHTML = `<div class="status">Kolada-data för befolkningsförändringen kunde inte hämtas.</div>`;
+        }
+    }
+
+    async function renderAgeGroups() {
+        const yearEl = document.getElementById("age-groups-year");
+        const barEl = document.getElementById("age-composition-bar");
+        const listEl = document.getElementById("age-groups-list");
+
+        try {
+            const [total, highlights, composition] = await Promise.all([
+                latestKpiPoint("N01951"),
+                Promise.all(ageHighlights.map(async group => ({ ...group, point: await latestKpiPoint(group.id) }))),
+                Promise.all(ageComposition.map(async group => ({ ...group, point: await latestKpiPoint(group.id) })))
+            ]);
+
+            if (!total) throw new Error("Saknar totalbefolkning");
+
+            const totalValue = total.value || 1;
+            yearEl.textContent = `Mätår: ${total.period}`;
+            barEl.innerHTML = composition
+                .filter(group => group.point)
+                .map(group => {
+                    const share = (group.point.value / totalValue) * 100;
+                    return `<span class="age-segment" title="${group.title}: ${formatPercent(share)}" style="width:${share}%; background:${group.color}"></span>`;
+                })
+                .join("");
+
+            listEl.innerHTML = highlights
+                .filter(group => group.point)
+                .map(group => {
+                    const share = (group.point.value / totalValue) * 100;
+                    return `
+                        <div class="age-row">
+                            <div class="age-label">${group.title}</div>
+                            <div class="age-mini-track">
+                                <span class="age-mini-fill" style="width:${Math.min(100, share)}%; background:${group.color}"></span>
+                            </div>
+                            <div class="age-value">${formatValue(group.point.value, "number")} (${formatPercent(share)})</div>
+                        </div>
+                    `;
+                })
+                .join("");
+        } catch (error) {
+            yearEl.textContent = "";
+            barEl.innerHTML = "";
+            listEl.innerHTML = `<div class="status">Kolada-data för åldersgrupper kunde inte hämtas.</div>`;
+        }
+    }
+
+    async function renderPopulationPyramid() {
+        const chartEl = document.getElementById("population-pyramid");
+        const yearEl = document.getElementById("population-pyramid-year");
+
+        try {
+            const rows = await Promise.all(pyramidGroups.map(async group => ({
+                ...group,
+                point: await latestGenderPoint(group.id)
+            })));
+            const validRows = rows.filter(row => row.point && (row.point.men || row.point.women));
+
+            if (!validRows.length) throw new Error("Saknar pyramiddata");
+
+            const maxValue = Math.max(1, ...validRows.flatMap(row => [row.point.men, row.point.women]));
+            const period = Math.max(...validRows.map(row => row.point.period));
+
+            chartEl.innerHTML = validRows.map(row => {
+                const menWidth = (row.point.men / maxValue) * 100;
+                const womenWidth = (row.point.women / maxValue) * 100;
+
+                return `
+                    <div class="pyramid-row">
+                        <span class="pyramid-number left">${formatValue(row.point.men, "number")}</span>
+                        <div class="pyramid-side">
+                            <span class="pyramid-fill men" style="width:${menWidth}%"></span>
+                        </div>
+                        <div class="pyramid-age">${row.title}</div>
+                        <div class="pyramid-side">
+                            <span class="pyramid-fill women" style="width:${womenWidth}%"></span>
+                        </div>
+                        <span class="pyramid-number">${formatValue(row.point.women, "number")}</span>
+                    </div>
+                `;
+            }).join("");
+
+            yearEl.textContent = `Mätår: ${period}. Staplarna visar antal personer per åldersgrupp.`;
+        } catch (error) {
+            chartEl.innerHTML = `<div class="status">Kolada-data för befolkningspyramiden kunde inte hämtas.</div>`;
+            yearEl.textContent = "";
+        }
+    }
+
+    function driverBarStyle(value, maxAbs) {
+        const width = Math.min(50, (Math.abs(value) / maxAbs) * 50);
+        return value >= 0
+            ? `left:50%; width:${width}%`
+            : `right:50%; width:${width}%`;
+    }
+
+    function valueTone(value) {
+        if (value > 0) return "positive";
+        if (value < 0) return "negative";
+        return "";
     }
 
     function setCardLoading(card) {
@@ -896,33 +1518,79 @@
         return value.toLocaleString("sv-SE", { maximumFractionDigits: 1 });
     }
 
+    function formatSignedValue(value) {
+        if (value > 0) return `+${formatValue(value, "number")}`;
+        if (value < 0) return `−${formatValue(Math.abs(value), "number")}`;
+        return "0";
+    }
+
+    function formatPercent(value) {
+        return `${value.toLocaleString("sv-SE", { maximumFractionDigits: 1 })}%`;
+    }
+
     async function renderComparison(panelId) {
         const panel = comparisonPanels.get(panelId);
         if (!panel) return;
 
-        const selectedId = document.getElementById(panel.selectId).value || panel.kpis[0].id;
-        const kpi = panel.kpis.find(item => item.id === selectedId) || panel.kpis[0];
+        const selectedKey = document.getElementById(panel.selectId).value || cardKey(panel.kpis[0]);
+        const kpi = panel.kpis.find(item => cardKey(item) === selectedKey) || panel.kpis[0];
         const tbody = document.getElementById(panel.tableBodyId);
         const title = document.getElementById(panel.titleId);
         title.textContent = kpi.title;
         tbody.innerHTML = `<tr><td colspan="4">Laddar...</td></tr>`;
 
         try {
-            const rows = await Promise.all(comparisonMunicipalities.map(async municipality => {
-                const data = await fetchJson(`${API_BASE}/data/municipality/${municipality.id}/kpi/${kpi.id}`);
-                return { ...municipality, values: valuesByYear(data.values || []) };
+            const allMunicipalityIds = [...new Set([
+                ...comparisonMunicipalities.map(municipality => municipality.id),
+                ...jonkopingCountyMunicipalities.map(municipality => municipality.id)
+            ])];
+            const seriesByMunicipality = new Map(await Promise.all(allMunicipalityIds.map(async municipalityId => {
+                const data = await fetchJson(`${API_BASE}/data/municipality/${municipalityId}/kpi/${kpi.id}`);
+                return [municipalityId, valuesByYear(data.values || [], kpi.gender || "T")];
+            })));
+            const rows = comparisonMunicipalities.map(municipality => ({
+                ...municipality,
+                values: seriesByMunicipality.get(municipality.id) || []
             }));
+            const countyRows = jonkopingCountyMunicipalities.map(municipality => ({
+                ...municipality,
+                values: seriesByMunicipality.get(municipality.id) || []
+            }));
+            const rowsWithAverages = [
+                ...rows,
+                averageSeries(rows, "average-six", "Snitt Höglandet", "#222222", [8, 5]),
+                averageSeries(countyRows, "average-county", "Snitt Jönköpings län", "#c04f15", [3, 4])
+            ];
 
-            panel.rows = rows;
+            panel.rows = rowsWithAverages;
             panel.format = kpi.format;
-            drawLineChart(document.getElementById(panel.chartId), rows, kpi.format, true, selectedMunicipalityByPanel.get(panelId));
-            renderComparisonLegend(panelId, rows);
-            renderComparisonTable(panelId, rows, kpi.format);
+            drawLineChart(document.getElementById(panel.chartId), rowsWithAverages, kpi.format, true, selectedMunicipalityByPanel.get(panelId));
+            renderComparisonLegend(panelId, rowsWithAverages);
+            renderComparisonTable(panelId, rowsWithAverages, kpi.format);
         } catch (error) {
             clearCanvas(document.getElementById(panel.chartId));
             document.getElementById(panel.legendId).innerHTML = "";
             tbody.innerHTML = `<tr><td colspan="4">Kunde inte hämta jämförelsedata från Kolada.</td></tr>`;
         }
+    }
+
+    function averageSeries(rows, id, title, color, dash) {
+        const years = [...new Set(rows.flatMap(row => row.values.map(point => point.period)))].sort((a, b) => a - b);
+        const values = years.map(year => {
+            const yearValues = rows
+                .map(row => row.values.find(point => point.period === year))
+                .filter(Boolean)
+                .map(point => point.value);
+
+            if (!yearValues.length) return null;
+
+            return {
+                period: year,
+                value: yearValues.reduce((sum, value) => sum + value, 0) / yearValues.length
+            };
+        }).filter(Boolean);
+
+        return { id, title, color, dash, values };
     }
 
     function renderComparisonLegend(panelId, rows) {
@@ -998,14 +1666,14 @@
         renderComparisonTable(panelId, panel.rows, panel.format);
     }
 
-    function drawLineChart(canvas, series, format, showAxes, highlightedId = "") {
+    function drawLineChart(canvas, series, format, showAxes, highlightedId = "", showMiniYears = false) {
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
         const width = canvas.width;
         const height = canvas.height;
         const padding = showAxes ? 48 : 8;
         const rightPadding = showAxes ? 18 : 8;
-        const bottomPadding = showAxes ? 42 : 10;
+        const bottomPadding = showAxes ? 42 : showMiniYears ? 24 : 10;
         const allPoints = series.flatMap(item => item.values);
 
         ctx.clearRect(0, 0, width, height);
@@ -1068,6 +1736,27 @@
             ctx.lineTo(padding, padding + chartHeight);
             ctx.lineTo(padding + chartWidth, padding + chartHeight);
             ctx.stroke();
+        } else if (showMiniYears) {
+            ctx.strokeStyle = "#e4e8ed";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding + chartHeight);
+            ctx.lineTo(padding + chartWidth, padding + chartHeight);
+            ctx.stroke();
+
+            ctx.font = "11px Segoe UI, Arial";
+            ctx.fillStyle = "#666";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+
+            for (let year = minYear; year <= maxYear; year += 1) {
+                const shouldLabel = maxYear - minYear <= 7 || year === minYear || year === maxYear || (year - minYear) % 2 === 0;
+                if (!shouldLabel) continue;
+
+                const label = `-${String(year).slice(-2)}`;
+                const x = Math.min(Math.max(xFor(year), 14), width - 14);
+                ctx.fillText(label, x, padding + chartHeight + 6);
+            }
         }
 
         const tooltipPoints = [];
@@ -1078,6 +1767,7 @@
             ctx.strokeStyle = item.color;
             ctx.globalAlpha = muted ? 0.18 : 1;
             ctx.lineWidth = highlightedId && item.id === highlightedId ? 4 : showAxes ? 2.5 : 2;
+            ctx.setLineDash(item.dash || []);
             ctx.beginPath();
             item.values.forEach((point, index) => {
                 const x = xFor(point.period);
@@ -1094,6 +1784,7 @@
                 else ctx.lineTo(x, y);
             });
             ctx.stroke();
+            ctx.setLineDash([]);
 
             const last = item.values[item.values.length - 1];
             ctx.fillStyle = item.color;
